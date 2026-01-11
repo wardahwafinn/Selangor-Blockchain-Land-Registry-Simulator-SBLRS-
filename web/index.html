@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Land Registry</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Blockchain Land Registry System</h1>
+
+    <div class="container">
+
+        <!-- Register Land -->
+        <div class="card">
+            <h3>Register Land</h3>
+            <input type="text" id="c_id" placeholder="Plot ID (e.g. LAND001)">
+            <input type="text" id="c_loc" placeholder="Location">
+            <input type="text" id="c_owner" placeholder="Owner Name">
+            <input type="number" id="c_area" placeholder="Area (sqft)">
+            <button onclick="registerLand()">Register</button>
+        </div>
+
+        <!-- Transfer Title -->
+        <div class="card">
+            <h3>Transfer Title</h3>
+            <input type="text" id="t_id" placeholder="Plot ID">
+            <input type="text" id="t_owner" placeholder="New Owner Name">
+            <button onclick="transferTitle()">Submit Transfer</button>
+        </div>
+
+        <!-- Query Land -->
+        <div class="card">
+            <h3>Verify Land Record</h3>
+            <input type="text" id="q_id" placeholder="Enter Plot ID">
+            <button onclick="queryLand()">Search Ledger</button>
+            <pre id="result" class="result-box"></pre>
+        </div>
+
+    </div>
+
+    <!-- System Logs -->
+    <div class="log-container">
+        <h2>System Logs</h2>
+        <div id="logBox" class="log-box"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

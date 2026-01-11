@@ -31,4 +31,13 @@ app.get("/query/:id", (req, res) => {
     res.send(contract.queryLand(req.params.id));
 });
 
+// Delete Land - NEW ENDPOINT
+app.post("/delete/:id", (req, res) => {
+    try {
+        res.send(contract.deleteLand(req.params.id));
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+});
+
 app.listen(3000, () => console.log("Land Registry Server running on http://localhost:3000"));

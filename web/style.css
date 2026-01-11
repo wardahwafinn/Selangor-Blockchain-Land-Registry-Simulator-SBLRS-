@@ -1,105 +1,275 @@
-/* Global */
-body {
-    font-family: Arial, sans-serif;
-    background: #f1f5f9;
+/* Global Reset */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
     padding: 20px;
+}
+
+/* Header */
+header {
     text-align: center;
-}
-
-/* Title */
-h1 {
+    color: white;
     margin-bottom: 40px;
-    color: #0f172a;
+    animation: fadeInDown 0.8s ease;
 }
 
-/* Card Container */
-.container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Main Container - Two Column Layout */
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+/* Left Panel - Functions */
+.left-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Right Panel - Logs (Fixed) */
+.right-panel {
+    position: sticky;
+    top: 20px;
 }
 
 /* Cards */
 .card {
     background: white;
-    padding: 20px;
-    border-radius: 12px;
-    width: 300px;
-    margin: 10px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-    text-align: left;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.6s ease;
 }
 
-.card h3 {
-    text-align: center;
-    color: #2563eb;
-    margin-bottom: 15px;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    color: white;
+}
+
+.card-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 25px;
 }
 
 /* Inputs */
-.card input {
+input {
     width: 100%;
-    padding: 8px;
-    margin-top: 8px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    border: 1px solid #cbd5e1;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
 }
 
 /* Buttons */
 button {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #2564eb;
+    padding: 12px;
     border: none;
-    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+}
+
+.btn-clear {
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 6px;
-    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-button:hover {
-    background: #1e40af;
+.btn-clear:hover {
+    background: rgba(255,255,255,0.3);
 }
 
-/* Query Result */
+/* Query Result Box */
 .result-box {
-    background: #e2e8f0;
-    padding: 10px;
-    height: 120px;
+    background: #f8fafc;
+    padding: 15px;
+    min-height: 120px;
+    max-height: 200px;
     overflow-y: auto;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 0.9rem;
+    border: 2px solid #e2e8f0;
+    font-family: 'Courier New', monospace;
+    color: #334155;
 }
 
-/* System Logs */
+/* Log Container */
 .log-container {
-    margin-top: 40px;
     background: white;
-    padding: 20px;
-    border-radius: 12px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-    text-align: left;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    animation: fadeInRight 0.8s ease;
 }
 
-.log-container h2 {
-    text-align: center;
-    color: #0f172a;
-    margin-bottom: 15px;
+.log-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .log-box {
-    background: #020617;
+    background: #0f172a;
     color: #22c55e;
-    padding: 15px;
-    height: 160px;
+    padding: 20px;
+    height: 700px;
     overflow-y: auto;
-    border-radius: 8px;
-    font-family: monospace;
-    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.log-welcome {
+    color: #64748b;
+    font-style: italic;
+}
+
+/* Scrollbar Styling */
+.log-box::-webkit-scrollbar,
+.result-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.log-box::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+.log-box::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+
+.result-box::-webkit-scrollbar-track {
+    background: #e2e8f0;
+}
+
+.result-box::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .right-panel {
+        position: static;
+    }
+    
+    .log-box {
+        height: 400px;
+    }
 }
